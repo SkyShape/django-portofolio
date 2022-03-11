@@ -1,0 +1,19 @@
+{% extends 'projects/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="mt-5" style="display:flex; justify-content:space-around;">
+        {% for project in projects %}
+            <div style="width:30vw; padding: 4px; margin: 12px; border-radius: 8px; display: flex; flex-direction:column; background-color: white; justify-content: space-around; align-items: center" >
+                <a href="{% url 'projects:project_detail' project.pk %}">
+                    <img src="{% static project.image %}" onmouseover="this.style.transform='scale(1.1)'; this.style.transition='transform 1s'" onmouseout="this.style.transform='scale(1)'; this.style.transition='transform 3s'" alt="nameImg" class="rounded img-thumbnail" style="margin-top: 8px; cursor:pointer; width: 200px; height: 200px">
+                </a>
+                <h2 class="m-2">{{ project.title }}</h2>
+                <p class="m-2">{{ project.technology }}</p> 
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
